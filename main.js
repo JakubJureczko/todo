@@ -18,4 +18,17 @@ function addTask() {
         document.getElementById('inputField').value = '';
     }
 
+
+
 }
+const button = document.querySelector('button')
+
+button.onclick = function() {
+    addTask() };
+    
+inputBox.onkeydown = function(e) { 
+      if (e.keyCode === 13) { 
+            addTask(); 
+       } 
+  }
+    
