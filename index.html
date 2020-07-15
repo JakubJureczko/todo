@@ -10,20 +10,20 @@
   <body>
     <div class="body-container">
       <div class="header">Just Do It</div>
-      <div id="taskLists">
+      <div id="taskLists"> 
         <!--list of all items-->
-        <div id="taskItem" class="taskItem"> <!--
-          <input type="checkbox" class="taskCheckbox"></input>
+        <div id="taskItem" class="taskItem">
+          <input type="checkbox" id="taskCheckbox" class="taskCheckbox"></input>
           <div class="taskText"></div>
-          <div class="editButton">Edit</div>
-          <div class="deleteButton">Delete</div> -->
+          <button onClick="editMe()" class="editButton">Edit</button>
+          <button onClick="deleteMe()" class="deleteButton">Delete</button>
         </div>
       </div>
-      <div id="inputBox">
+      <form id="inputBox">
         <!--box to enter task(phase1)-->
         <input type="text" placeholder="Add a task...." id="inputField" />
-        <button><strong>Add task</strong></button>
-      </div>
+        <input onclick="addTask()" type="submit" value="Add task">
+      </form>
     </div>
     <script type="text/javascript" src="main.js"></script>
   </body>

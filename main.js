@@ -1,5 +1,4 @@
 // Make all the parts of the taskItem
-
 function makeACheckBox() {
     const newCheckbox = document.createElement("input");
     newCheckbox.type = "checkbox";
@@ -8,38 +7,41 @@ function makeACheckBox() {
   }
   
   function makeAEdit() {
-    const newEdit = document.createElement("div");
+    const newEdit = document.createElement("button");
+    newEdit.addEventListener("click", editMe);
     newEdit.innerHTML = "Edit";
     newEdit.className = "editButton";
     return newEdit;
   }
   
   function makeADelete() {
-    const newDelete = document.createElement("div");
+    const newDelete = document.createElement("button");
+    newDelete.addEventListener("click", deleteMe);
     newDelete.innerHTML = "Delete";
     newDelete.className = "deleteButton";
     return newDelete;
   }
   
   function makeAText(text) {
-    const newText = document.createElement("div");
-    newText.innerText = text;
-    newText.classList.add("taskItem");
+    const newText = document.createElement("input");
+    newText.value = text;
+    newText.readOnly = true;
+    newText.classList.add("taskText");
     return newText;
   }
   
   // Make the taskItem
   function makeATaskItem(text) {
     const task = document.createElement("div");
-    task.id = "taskItem";
+    task.className = "taskItem";
     const chechBox = makeACheckBox();
     const edited = makeAEdit();
     const deleted = makeADelete();
     const textbox = makeAText(text);
-    taskItem.appendChild(chechBox);
-    taskItem.appendChild(textbox);
-    taskItem.appendChild(edited);
-    taskItem.appendChild(deleted);
+    task.appendChild(chechBox);
+    task.appendChild(textbox);
+    task.appendChild(edited);
+    task.appendChild(deleted);
     return task;
   }
   
@@ -49,85 +51,35 @@ function makeACheckBox() {
     const taskContainer = document.getElementById("taskLists");
     if (text) {
       const taskItem = makeATaskItem(text);
-      taskContainer.append(taskItem);
-      text.value = "";
+      taskContainer.appendChild(taskItem);
+      document.getElementById("inputField").value = "";
     }
   }
-  const button = document.querySelector("button");
   
-  button.onclick = function () {
-    addTask();
-  };
+  // delete the parent container
+  function deleteMe() {
+    this.parentElement.remove();
+  }
   
-  inputBox.onkeydown = function (e) {
-    if (e.keyCode === 13) {
-      addTask();
-    }
-  };
+  function editMe() {
+    // get the input text area of the task
+    const textArea = this.parentElement.getElementsByClassName("taskText")[0];
+    // change it to be modifiable
+    textArea.readOnly = false;
+    // get the text cursor on the text area
+    textArea.focus();
+    // make it not modifiable once pressed the Enter key
+    textArea.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        textArea.readOnly = true;
+      }
+    });
+  }
+  
+  //Prevent the form to refresh the web
+  const form = document.getElementById("inputBox");
+  function handleForm(event) {
+    event.preventDefault();
+  }
+  form.addEventListener("submit", handleForm);
 
-  // Make all the parts of the taskItem
-
-function makeACheckBox() {
-    const newCheckbox = document.createElement("input");
-    newCheckbox.type = "checkbox";
-    newCheckbox.className = "taskCheckbox";
-    return newCheckbox;
-  }
-  
-  function makeAEdit() {
-    const newEdit = document.createElement("div");
-    newEdit.innerHTML = "Edit";
-    newEdit.className = "editButton";
-    return newEdit;
-  }
-  
-  function makeADelete() {
-    const newDelete = document.createElement("div");
-    newDelete.innerHTML = "Delete";
-    newDelete.className = "deleteButton";
-    return newDelete;
-  }
-  
-  function makeAText(text) {
-    const newText = document.createElement("div");
-    newText.innerText = text;
-    newText.classList.add("taskItem");
-    return newText;
-  }
-  
-  // Make the taskItem
-  function makeATaskItem(text) {
-    const task = document.createElement("div");
-    task.classList = "taskItem";
-    const chechBox = makeACheckBox();
-    const edited = makeAEdit();
-    const deleted = makeADelete();
-    const textbox = makeAText(text);
-    taskItem.appendChild(chechBox);
-    taskItem.appendChild(textbox);
-    taskItem.appendChild(edited);
-    taskItem.appendChild(deleted);
-    return task;
-  }
-  
-  // Function addTask()
-  function addTask() {
-    const text = document.getElementById("inputField").value;
-    const taskContainer = document.getElementById("taskLists");
-    if (text) {
-      const taskItem = makeATaskItem(text);
-      taskContainer.append(taskItem);
-      text.value = "";
-    }
-  }
-  const button = document.querySelector("button");
-  
-  button.onclick = function () {
-    addTask();
-  };
-  
-  inputBox.onkeydown = function (e) {
-    if (e.keyCode === 13) {
-      addTask();
-    }
-  };
