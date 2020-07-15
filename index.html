@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css" />
     <title>To-Do-List</title>
-</head>
-<body>
-    <section class="body-container">
-        <div class="header">Just Do It</div>
-        <div id="taskLists"> <!--list of all items-->
-            <div id="taskItem"><!--
-                <input type="checkbox" class="taskCheckbox"></input>
-                <div class="taskText"></div>
-                <div class="editButton">Edit</div>
-                <div class="deleteButton">Delete</div> -->
-            </div>            
+  </head>
+  <body>
+    <div class="body-container">
+      <div class="header">Just Do It</div>
+      <div id="taskLists">
+        <!--list of all items-->
+        <div class="taskItem">
+          <input type="checkbox" class="taskCheckbox"></input>
+          <div class="taskText"></div>
+          <button onClick="editMe()" class="editButton">Edit</button>
+          <button onClick="deleteMe()" class="deleteButton">Delete</button>
         </div>
-        <div id="inputBox"> <!--box to enter task(phase1)-->
-            <input type="text" placeholder="Add a task...." id="inputField">
-            <button><strong>Add task</strong></button>
-        </div>
-    </section>
+      </div>
+      <form id="inputBox">
+        <!--box to enter task(phase1)-->
+        <input type="text" placeholder="Add a task...." id="inputField" />
+        <input onclick="addTask()" type="submit" value="Add task">
+      </form>
+    </div>
     <script type="text/javascript" src="main.js"></script>
-</body>
+  </body>
 </html>
-
