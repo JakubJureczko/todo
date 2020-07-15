@@ -90,8 +90,8 @@ function addTask() {
     const taskItem = makeATaskItem(text);
     taskContainer.appendChild(taskItem);
     document.getElementById("inputField").value = "";
-    const out = document.querySelector('#taskLists');
-    out.scrollTop = out.scrollHeight - out.clientHeight; 
+    taskContainer.scrollTop = taskContainer.scrollHeight - taskContainer.clientHeight; 
+    
   }
 }
 
