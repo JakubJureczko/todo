@@ -23,8 +23,9 @@ function makeADelete() {
 }
 
 function makeAText(text) {
-  const newText = document.createElement("div");
-  newText.innerText = text;
+  const newText = document.createElement("input");
+  newText.value = text;
+  newText.readOnly = true;
   newText.classList.add("taskText");
   return newText;
 }
@@ -60,7 +61,20 @@ function deleteMe() {
   this.parentElement.remove();
 }
 
-function editMe() {}
+function editMe() {
+  // get the input text area of the task
+  const textArea = this.parentElement.getElementsByClassName("taskText")[0];
+  // change it to be modifiable
+  textArea.readOnly = false;
+  // get the text cursor on the text area
+  textArea.focus();
+  // make it not modifiable once pressed the Enter key
+  textArea.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      textArea.readOnly = true;
+    }
+  });
+}
 
 //Prevent the form to refresh the web
 const form = document.getElementById("inputBox");
