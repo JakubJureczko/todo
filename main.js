@@ -1,5 +1,4 @@
 // Make all the parts of the taskItem
-
 function makeACheckBox() {
   const newCheckbox = document.createElement("input");
   newCheckbox.type = "checkbox";
@@ -8,14 +7,16 @@ function makeACheckBox() {
 }
 
 function makeAEdit() {
-  const newEdit = document.createElement("div");
+  const newEdit = document.createElement("button");
+  newEdit.addEventListener("click", editMe);
   newEdit.innerHTML = "Edit";
   newEdit.className = "editButton";
   return newEdit;
 }
 
 function makeADelete() {
-  const newDelete = document.createElement("div");
+  const newDelete = document.createElement("button");
+  newDelete.addEventListener("click", deleteMe);
   newDelete.innerHTML = "Delete";
   newDelete.className = "deleteButton";
   return newDelete;
@@ -53,6 +54,13 @@ function addTask() {
     document.getElementById("inputField").value = "";
   }
 }
+
+// delete the parent container
+function deleteMe() {
+  this.parentElement.remove();
+}
+
+function editMe() {}
 
 //Prevent the form to refresh the web
 const form = document.getElementById("inputBox");
