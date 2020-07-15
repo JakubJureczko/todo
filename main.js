@@ -24,22 +24,22 @@ function makeADelete() {
 function makeAText(text) {
   const newText = document.createElement("div");
   newText.innerText = text;
-  newText.classList.add("taskItem");
+  newText.classList.add("taskText");
   return newText;
 }
 
 // Make the taskItem
 function makeATaskItem(text) {
   const task = document.createElement("div");
-  task.id = "taskItem";
+  task.className = "taskItem";
   const chechBox = makeACheckBox();
   const edited = makeAEdit();
   const deleted = makeADelete();
   const textbox = makeAText(text);
-  taskItem.appendChild(chechBox);
-  taskItem.appendChild(textbox);
-  taskItem.appendChild(edited);
-  taskItem.appendChild(deleted);
+  task.appendChild(chechBox);
+  task.appendChild(textbox);
+  task.appendChild(edited);
+  task.appendChild(deleted);
   return task;
 }
 
@@ -49,18 +49,14 @@ function addTask() {
   const taskContainer = document.getElementById("taskLists");
   if (text) {
     const taskItem = makeATaskItem(text);
-    taskContainer.append(taskItem);
-    text.value = "";
+    taskContainer.appendChild(taskItem);
+    document.getElementById("inputField").value = "";
   }
 }
-const button = document.querySelector("button");
 
-button.onclick = function () {
-  addTask();
-};
-
-inputBox.onkeydown = function (e) {
-  if (e.keyCode === 13) {
-    addTask();
-  }
-};
+//Prevent the form to refresh the web
+const form = document.getElementById("inputBox");
+function handleForm(event) {
+  event.preventDefault();
+}
+form.addEventListener("submit", handleForm);

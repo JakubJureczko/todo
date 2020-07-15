@@ -26,8 +26,8 @@
 
 .taskItem {
   display: flex;
-  flex-direction: column;
-  justify-content: left;
+  flex-direction: row;
+  justify-content: space-around;
   margin: 5px;
   border: 2px solid black;
   padding: 5px;
