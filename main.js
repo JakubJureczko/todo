@@ -1,44 +1,7 @@
-// const close = document.getElementsByClassName('close');
-
-
-// for (i = 0; i < close.length; i++) {
-//     close[i].addEventListener('click', function() {
-//     this.parentElement.style.display = 'none';
-//     });
-
-
-// function addTask() {
-//     const text = document.getElementById('inputField').value;
-
-//     if (text) {
-//         const newElement = document.createElement('div');
-//         newElement.innerText = text;
-//         newElement.classList.add('taskItem');
-//         document.getElementById('taskLists').append(newElement);
-//         document.getElementById('inputField').value = '';
-//     }
-
-
-
-// }
-// const button = document.querySelector('button')
-
-// button.onclick = function() {
-//     addTask() };
-    
-// inputBox.onkeydown = function(e) { 
-//       if (e.keyCode === 13) { 
-//             addTask(); 
-//        } 
-//   }
-
-// const out = document.querySelector('#taskLists');
-// out.scrollTop = out.scrollHeight - out.clientHeight; 
-
-    
 // Make all the parts of the taskItem
 function makeACheckBox() {
   const newCheckbox = document.createElement("input");
+  newCheckbox.addEventListener("change", checkBoxMe);
   newCheckbox.type = "checkbox";
   newCheckbox.className = "taskCheckbox";
   return newCheckbox;
@@ -61,8 +24,9 @@ function makeADelete() {
 }
 
 function makeAText(text) {
-  const newText = document.createElement("div");
-  newText.innerText = text;
+  const newText = document.createElement("input");
+  newText.value = text;
+  newText.readOnly = true;
   newText.classList.add("taskText");
   return newText;
 }
@@ -90,8 +54,8 @@ function addTask() {
     const taskItem = makeATaskItem(text);
     taskContainer.appendChild(taskItem);
     document.getElementById("inputField").value = "";
-    taskContainer.scrollTop = taskContainer.scrollHeight - taskContainer.clientHeight; 
-    
+    taskContainer.scrollTop =
+      taskContainer.scrollHeight - taskContainer.clientHeight;
   }
 }
 
@@ -100,7 +64,29 @@ function deleteMe() {
   this.parentElement.remove();
 }
 
-function editMe() {}
+function editMe() {
+  // get the input text area of the task
+  const textArea = this.parentElement.getElementsByClassName("taskText")[0];
+  // change it to be modifiable
+  textArea.readOnly = false;
+  // get the text cursor on the text area
+  textArea.focus();
+  // make it not modifiable once pressed the Enter key
+  textArea.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      textArea.readOnly = true;
+    }
+  });
+}
+
+function checkBoxMe() {
+  const textArea = this.parentElement.getElementsByClassName("taskText")[0];
+  if (textArea.style.textDecoration === "line-through") {
+    textArea.style.textDecoration = "none";
+  } else {
+    textArea.style.textDecoration = "line-through";
+  }
+}
 
 //Prevent the form to refresh the web
 const form = document.getElementById("inputBox");
@@ -108,5 +94,3 @@ function handleForm(event) {
   event.preventDefault();
 }
 form.addEventListener("submit", handleForm);
-
- 
