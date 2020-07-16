@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css" />
     <title>To-Do-List</title>
   </head>
   <body>
     <div class="body-container">
       <div class="header">Just Do It</div>
-      <div id="taskLists"> 
-        <!--list of all items-->
-        <div id="taskItem" class="taskItem">
-          <input type="checkbox" id="taskCheckbox" class="taskCheckbox"></input>
-          <div class="taskText"></div>
-          <button onClick="editMe()" class="editButton">Edit</button>
-          <button onClick="deleteMe()" class="deleteButton">Delete</button>
+      <div id="taskLists">
+        <div class="taskItem">
+          <input type="checkbox" class="taskCheckbox">
+          <input readonly class="taskText">
+          <button class="editButton">
+            Edit</button>
+          <button class ="deleteButton">Delete</button>
         </div>
+        <!--list of all items-->
       </div>
       <form id="inputBox">
         <!--box to enter task(phase1)-->
-        <input type="text" placeholder="Add a task...." id="inputField" />
-        <input onclick="addTask()" type="submit" value="Add task">
+        <input
+          type="text"
+          placeholder="Add a task...."
+          id="inputField"
+          autocomplete="off"
+        />
+        <input onclick="addTask()" type="submit" value="Add task" />
       </form>
     </div>
     <script type="text/javascript" src="main.js"></script>
-</body>
+  </body>
 </html>
-
