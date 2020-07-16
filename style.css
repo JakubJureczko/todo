@@ -25,7 +25,7 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+/* Tasks List */
 #taskLists {
   box-shadow: 0px 2px 4px #00000054;
   width: 350px;
@@ -50,6 +50,8 @@ body {
   margin: 0px 10px 0px 10px;
 }
 
+
+/*Task Input Section */
 #inputBox {
   display: flex;
   flex-direction: row;
@@ -59,7 +61,30 @@ body {
 }
 
 #inputField {
-  flex-grow: 1;
-  margin: 20px;
-  height: 30px;
+    flex-grow: 1;
+    margin: 20px 0px 20px 20px;
+    height: 30px;
+}
+
+.addIcon > img {
+    height: 30px;
+    width: 30px;
+}
+
+.addIcon {
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+}
+
+#addButton {
+    background-color: #2a9d8f;
+    border: none;
+    width: 50px;
+    padding: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
