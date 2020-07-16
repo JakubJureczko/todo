@@ -24,8 +24,9 @@ function makeADelete() {
 }
 
 function makeAText(text) {
-  const newText = document.createElement("input");
+  const newText = document.createElement("P");
   newText.value = text;
+  newText.innerHTML = text;
   newText.readOnly = true;
   newText.classList.add("taskText");
   return newText;
