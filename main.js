@@ -1,6 +1,7 @@
 // Make all the parts of the taskItem
 function makeACheckBox() {
   const newCheckbox = document.createElement("input");
+  newCheckbox.addEventListener("change", checkBoxMe);
   newCheckbox.type = "checkbox";
   newCheckbox.className = "taskCheckbox";
   return newCheckbox;
@@ -42,6 +43,7 @@ function makeATaskItem(text) {
   task.appendChild(textbox);
   task.appendChild(edited);
   task.appendChild(deleted);
+
   return task;
 }
 
@@ -53,6 +55,8 @@ function addTask() {
     const taskItem = makeATaskItem(text);
     taskContainer.appendChild(taskItem);
     document.getElementById("inputField").value = "";
+    taskContainer.scrollTop =
+      taskContainer.scrollHeight - taskContainer.clientHeight;
   }
 }
 
@@ -74,6 +78,15 @@ function editMe() {
       textArea.readOnly = true;
     }
   });
+}
+
+function checkBoxMe() {
+  const textArea = this.parentElement.getElementsByClassName("taskText")[0];
+  if (textArea.style.textDecoration === "line-through") {
+    textArea.style.textDecoration = "none";
+  } else {
+    textArea.style.textDecoration = "line-through";
+  }
 }
 
 //Prevent the form to refresh the web
