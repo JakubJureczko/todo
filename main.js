@@ -90,6 +90,7 @@ function checkBoxMe() {
 
 //Prevent the form to refresh the web
 const form = document.getElementById("inputBox");
+
 function handleForm(event) {
   event.preventDefault();
 }

@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
     <title>To-Do-List</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="body-container">
-      <div class="header">Just Do It</div>
-      <div id="taskLists">
-        <!--list of all items-->
-      </div>
-      <form id="inputBox">
-        <!--box to enter task(phase1)-->
-        <input
-          type="text"
-          placeholder="Add a task...."
-          id="inputField"
-          autocomplete="off"
-        />
-        <input onclick="addTask()" type="submit" value="Add task" />
-      </form>
+        <div class="header">Just-Do-It</div>
+        <div id="taskLists">
+            <!--
+        <div class="taskItem">
+          <input type="checkbox" class="taskCheckbox">
+          <input readonly class="taskText">
+          <button class="editButton">
+            Edit</button>
+          <button class ="deleteButton">Delete</button>
+        </div> -->
+            <!--list of all items-->
+        </div>
+        <form id="inputBox">
+            <!--box to enter task(phase1)-->
+            <input type="text" placeholder="Add a task...." id="inputField" autocomplete="off" />
+            <button onclick="addTask()" type="submit" value="Add task" id="addButton">
+                <div class="addIcon"><img src="/icons/plus.svg"></div>
+            </button>
+        </form>
     </div>
     <script type="text/javascript" src="main.js"></script>
-  </body>
+</body>
+
 </html>
