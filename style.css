@@ -48,6 +48,7 @@ body {
 .taskText {
   width: 80%;
   margin: 0px 10px 0px 10px;
+  max-width: 55%;
 }
 
 /*Task Input Section */
@@ -86,4 +87,14 @@ body {
   padding: 0px;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.editButton {
+  align-self: center;
+}
+.deleteButton {
+  align-self: center;
+}
+.taskCheckbox {
+  align-self: center;
 }
